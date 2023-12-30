@@ -1,0 +1,78 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Books</h1>
+
+<%= form_tag(search_path, :method => "get" , :required => true) do %>  
+  
+  <%= radio_button_tag(:search_by,"title",:checked => true,) %>Title
+  <%= radio_button_tag(:search_by, "authors")%>Author
+  <%= radio_button_tag(:search_by, "published")%>Published Date
+  <%= radio_button_tag(:search_by, "category")%>Category</p>
+    <%= search_field_tag :search, params[:search], placeholder: "Search" , :required => true %>  
+      <%= button_tag do%> 
+	  <%= t('Search')%>
+	  <% end %>
+
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Isbn</th>
+      <th>Title</th>
+      <th>Authors</th>
+      <th>Language</th>
+      <th>Published</th>
+      <th>Edition</th>
+      <th>Subject</th>
+      <th>Summary</th>
+      <th>Category</th>
+	    <th>Special Collection</th>
+      <th>Library</th>
+      <th>Available Count</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.isbn %></td>
+        <td><%= book.title %></td>
+        <td><%= book.authors %></td>
+        <td><%= book.language %></td>
+		    <td><%= book.published %></td>
+        <td><%= book.edition %></td>
+        <td><%= book.subject %></td>
+        <td><%= book.summary %></td>
+        <td><%= book.category %></td>		
+        <td><%= if book.special_collection == true
+			'Yes'
+			else
+			  'No'
+			end
+			 %></td>
+        <td><%=  Library.find(book.library_id ).name %></td>
+        <% if book.count > 0 %> 
+          <td><%= "Available" %></td>
+        <%else%>
+        <td><%= "Unavailable" %></td>
+        <%end%>
+        <% if current_admin.nil? %>
+          <td><%= link_to 'Show', book %></td>
+          <% if book.count < 1 or book.special_collection == true %> 
+            <td><%= link_to 'Hold Request', controller: "books", action: "checkout", id: book %></td>
+          <%else%>
+            <td><%= link_to 'Checkout', controller: "books", action: "checkout", id: book %></td>
+          <%end%>
+          <td><%= link_to 'Bookmark', controller: "books", action: "bookmark", id: book %></td>
+        <% else %>
+          <td><%= link_to 'View Book History', controller: "books", action: "viewBookHistory", id: book %></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back', students_path %>
