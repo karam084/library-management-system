@@ -11,7 +11,7 @@ class CreateBooks < ActiveRecord::Migration[7.0]
       t.text :summary
       t.string :category
       t.boolean :special_collection
-      t.references :library, null: false, foreign_key: true
+      #t.references :library, null: false, foreign_key: true
       
       t.timestamps
     end
