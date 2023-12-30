@@ -1,0 +1,26 @@
+{
+  "name": "library_system",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karam084/library-management-system.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karam084/library-management-system/issues"
+  },
+  "homepage": "https://github.com/karam084/library-management-system#readme",
+  "dependencies": {
+    "node-modules": "^1.0.1"
+  }
+}
