@@ -1,0 +1,10 @@
+<h1>New Book</h1>
+
+<%= render 'form', book: @book %>
+
+<% if current_admin.nil? and current_librarian.nil? %>     
+	<%= link_to 'Back', books_path %>
+<% end %>
+<% if !current_librarian.nil? %>
+<%= link_to 'Back', librarian_book_view_path %>
+<% end %>

@@ -1,0 +1,41 @@
+
+<H1> List Of checked Out Books </H1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Isbn</th>
+      <th>Title</th>
+      <th>Authors</th>
+      <th>Language</th>
+      <th>Published</th>
+      <th>Edition</th>
+      <th>Subject</th>
+      <th>Summary</th>
+      <th>Category</th>
+      <th>Special collection</th>
+      <th>Library</th>
+      <th>Count</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.isbn %></td>
+        <td><%= book.title %></td>
+        <td><%= book.authors %></td>
+        <td><%= book.language %></td>
+        <td><%= book.published %></td>
+        <td><%= book.edition %></td>
+        <td><%= book.subject %></td>
+        <td><%= book.summary %></td>
+        <td><%= book.category %></td>
+        <td><%= book.special_collection %></td>
+        <td><%= Library.find(book.library_id).name %></td>
+        <td><%= book.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

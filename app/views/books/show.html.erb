@@ -1,0 +1,89 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cover:</strong>
+  <%= image_tag @book.cover.url.to_s if @book.cover?%>
+</p>
+
+<p>
+  <strong>Isbn:</strong>
+  <%= @book.isbn %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @book.title %>
+</p>
+
+<p>
+  <strong>Authors:</strong>
+  <%= @book.authors %>
+</p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @book.language %>
+</p>
+
+<p>
+  <strong>Published:</strong>
+  <%= @book.published %>
+</p>
+
+<p>
+  <strong>Edition:</strong>
+  <%= @book.edition %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @book.subject %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @book.summary %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @book.category %>
+</p>
+
+<p>
+  <strong>Special collection:</strong>
+  <%= if @book.special_collection == true
+    'Yes'
+    else
+      'No'
+    end
+     %>
+</p>
+
+<p>
+  <strong>Library:</strong>
+  <%= Library.find(@book.library_id ).name %>
+</p>
+
+<p>
+  <strong>Available Count:</strong>
+  <%= @book.count %>
+</p>
+
+
+
+
+<% if current_admin.nil? and current_librarian.nil? and current_student.nil? %>          
+	<%= link_to 'Back', books_path %>
+<% end %>
+<% if !current_admin.nil? %>
+	<td><%= link_to 'Edit', edit_book_path %></td>
+	<%= link_to 'Back', show_books_path %>
+<% end %>
+<% if !current_librarian.nil? %>
+	<td><%= link_to 'Edit', edit_book_path %></td>
+	<%= link_to 'Back', librarian_book_view_path %>
+<% end %>
+<% if !current_student.nil? %>
+	<%= link_to 'Back', books_students_path %>
+<% end %>

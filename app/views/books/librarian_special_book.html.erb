@@ -1,0 +1,23 @@
+<h1> Special Book Request </h1>
+<table>
+  <thead>
+    <tr>
+      <th>Student Name</th>
+      <th>Title</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% if !@special_books.nil? %>
+    <% @special_books.each do |special_book| %>
+      <tr>
+        <td><%= Student.find(special_book.student_id).name %></td>
+        <td><%= Book.find(special_book.book_id).title %></td>
+         <td><%= link_to 'Approve', controller: "books", action: "approve_special_book", id: special_book %></td>
+        <td><%= link_to 'Deny', controller: "books", action: "reject_special_book", id: special_book %></td>
+
+      </tr>
+    <% end %>
+  <%end%>
+  </tbody>
