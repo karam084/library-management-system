@@ -1,0 +1,12 @@
+<h1>Editing Student</h1>
+
+<strong>Note:</strong> Updating your profile will log you out.<br><br>
+
+<%= render 'new_form', student: @student %>
+
+<% if current_admin.nil? %>
+<%= link_to 'Show', @student %> |
+<%= link_to 'Back', students_path %>
+<% else %>
+<%= link_to 'Back', show_students_path %>
+<% end %>

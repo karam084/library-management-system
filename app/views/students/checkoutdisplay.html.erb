@@ -1,0 +1,35 @@
+<h1>Your Checked Out Books</h1>
+
+<table>
+  <tr>
+    <th>Checked Out Books</th>
+  </tr>
+  <% @checkout.each do |data| %>
+    <tr>
+      <td><%= data.isbn %></td>
+    </tr>
+  <% end %>
+</table>
+
+<table>
+  <tr>
+    <th>Bookmarked Books</th>
+  </tr>
+  <% @request.each do |data| %>
+    <tr>
+      <td><%= data.isbn %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+<table>
+  <tr>
+    <th>Requested Books</th>
+  </tr>
+  <% @bookmark.each do |data| %>
+    <tr>
+      <td><%= data.isbn %></td>
+    </tr>
+  <% end %>
+</table>

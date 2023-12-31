@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Students</h1>
+
+Name: <%= current_student.name %><br>
+Email: <%=  current_student.email %><br>
+<br>
+<br>
+<table>
+  <th><strong>Student Rights</strong></th>
+  
+  <tr><td></td><tr>
+  <tr><td><%= link_to "Edit profile", edit_student_path(current_student) %></td></tr>
+  <tr><td></td><tr>
+  <tr><td></td><tr>
+  <tr><td><strong>Books</strong></td><tr>
+  <tr><td><%= link_to 'View Books', books_students_path %></td></tr>
+  <tr><td></td><tr>
+  <tr><td></td><tr>
+  <tr><td><strong>Libraries</strong></td><tr>
+  <tr><td><%= link_to 'View Libraries', student_libraries_index_path %></td></tr>
+  <tr><td></td><tr>
+  <tr><td></td><tr>
+  <tr><td><strong>Your Data</strong></td><tr>
+  <tr><td><%= link_to 'Your Activity (Checkouts/Bookmarks/Hold Requests)', getBookmarkBooks_path %></td></tr>
+  <tr><td><%= link_to 'Books Fines', getStudentBookFine_path %></td></tr>
+</table>

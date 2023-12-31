@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<strong>Note:</strong> Updating your profile has logged you out.<br><br>
+<p>
+  <strong>Email:</strong>
+  <%= @student.email %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @student.name %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @student.password %>
+</p>
+
+<p>
+  <strong>Education level:</strong>
+  <%= @student.education_level %>
+</p>
+
+<p>
+  <strong>University:</strong>
+  <%= @student.university %>
+</p>
+
+<p>
+  <strong>Max book allowed:</strong>
+  <%= @student.max_book_allowed %>
+</p>
+
+
+<% if current_admin.nil? %>
+	<%= link_to 'Edit', edit_student_path(@student) %> |
+	<%= link_to 'Back', new_student_session_path %>
+<% else %>
+	<%= link_to 'Back', show_students_path %>
+<% end %>
