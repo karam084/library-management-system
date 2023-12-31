@@ -1,0 +1,60 @@
+
+<h2>Sign up</h2>
+
+<%= form_for @student do |form| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= form.label :education_level%>
+    <%= form.select :education_level, ['B.S', 'M.S', 'PHD'] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :university %>
+    <%= form.select(:university, University::UNIVERSITY_TYPES ) %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :max_book_allowed, :value =>'5' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit :id => "button" %>
+  <% end %>
+
+<script type="text/javascript">
+  max_days_borrowed = 10;
+  document.getElementById('student_education_level').addEventListener('change',insert_val);
+  function insert_val() {
+      
+      var education_level = document.getElementById('student_education_level').value;
+    console.log(education_level);
+      if(education_level == 'B.S'){
+          max_days_borrowed = 10;
+      }
+      else if(education_level == 'M.S'){
+          max_days_borrowed = 20;
+      }
+      else if(education_level == 'PHD'){
+          max_days_borrowed = 30;
+      }
+    document.getElementById('student_max_book_allowed').value  =max_days_borrowed;
+    console.log(document.getElementById('student_max_book_allowed').value);
+   }
+
+</script>
