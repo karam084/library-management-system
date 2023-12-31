@@ -4,5 +4,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root 'books#index'
+  # Defines the articles resource routes
+  # resources :articles
+  resources :books
+  resources :libraries
+  resources :students
+  resources :book_students
+  
 
 end

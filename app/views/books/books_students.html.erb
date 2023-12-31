@@ -1,6 +1,15 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Books</h1>
+<%= form_tag books_path, :method => 'get' do %> 
+    <%= radio_button_tag :search_type, "title" %> Title
+    <%= radio_button_tag :search_type, "author" %> Author
+    <%= radio_button_tag :search_type, "published date" %> Published Date
+    <%= radio_button_tag :search_type, "category" %> Category
+    <%= search_field_tag :search, params[:search] %> 
+    <%= submit_tag "Search", :name => nil %>
+    
+<% end %>
+
 
 <table>
     <thead>
@@ -48,5 +57,55 @@
 </table>
 
 <br>
+
+<%= link_to 'New Book', new_book_path %>
+# Compare this snippet from app/views/books/show.html.erb:
+# <p id="notice"><%= notice %></p>
+# 
+# <p>
+#   <strong>Isbn:</strong>
+#   <%= @book[:isbn] %>
+# </p>
+# 
+# <p>
+#   <strong>Title:</strong>
+#   <%= @book[:title] %>
+# </p>
+# 
+# <p>
+#   <strong>Authors:</strong>
+#   <%= @book[:authors] %>
+# </p>
+# 
+# <p>
+#   <strong>Language:</strong>
+#   <%= @book[:language] %>
+# </p>
+# 
+# <p>
+#   <strong>Published:</strong>
+#   <%= @book[:published] %>
+# </p>
+# 
+# <p>
+#   <strong>Edition:</strong>
+#   <%= @book[:edition] %>
+# </p>
+# 
+# <p>
+#   <strong>Subject:</strong>
+#   <%= @book[:subject] %>
+# </p>
+# 
+# <p>
+#   <strong>Summary:</strong>
+#   <%= @book
+#   [:summary] %>
+# </p>
+#
+# <p>           
+
+
+
 
 
