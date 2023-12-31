@@ -1,15 +1,4 @@
-<p id="notice"><%= notice %></p>
-<h1>Books</h1>
-<%= form_tag books_path, :method => 'get' do %> 
-    <%= radio_button_tag :search_type, "title" %> Title
-    <%= radio_button_tag :search_type, "author" %> Author
-    <%= radio_button_tag :search_type, "published date" %> Published Date
-    <%= radio_button_tag :search_type, "category" %> Category
-    <%= search_field_tag :search, params[:search] %> 
-    <%= submit_tag "Search", :name => nil %>
-    
-<% end %>
-
+<h2>Checked Out Books</h2>
 <table>
     <thead>
         <tr>
@@ -21,32 +10,20 @@
             <th>Edition</th>
             <th>Subject</th>
             <th>Summary</th>
-            <th>Category</th>
-            <th>Special Collection</th>
-            <th>Library</th>
-            <th colspan="4"></th>
+            <th colspan="3"></th>
         </tr>
     </thead>
-
     <tbody>
         <% @books.each do |book| %>
         <tr>
-            <td><%= book.isbn %></td>
-            <td><%= book.title %></td>
-            <td><%= book.authors %></td>
-            <td><%= book.language %></td>
-            <td><%= book.published %></td>
-            <td><%= book.edition %></td>
-            <td><%= book.subject %></td>
-            <td><%= book.summary %></td>
-            <td><%= book.category %></td>
-            <td><%= if book.special_collection == true
-            'Yes'
-            else
-              'No'
-            end
-             %></td>
-            <td><%=  Library.find(book.library_id).name %></td>
+            <td><%= book[:isbn] %></td>
+            <td><%= book[:title] %></td>
+            <td><%= book[:authors] %></td>
+            <td><%= book[:language] %></td>
+            <td><%= book[:published] %></td>
+            <td><%= book[:edition] %></td>
+            <td><%= book[:subject] %></td>
+            <td><%= book[:summary] %></td>
             <td><%= link_to 'Show', book %></td>
             <td><%= link_to 'Edit', edit_book_path(book) %></td>
             <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -104,7 +81,9 @@
 #
 # <p>           
 
-
-
-
-
+# Compare this snippet from app/views/books/index.html.erb:
+# <h1>Listing Books</h1>
+# 
+# <
+        
+    
