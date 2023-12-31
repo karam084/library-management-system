@@ -1,0 +1,20 @@
+<h1> Book Hold Request</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Student Name</th>
+      <th>Title</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% if !@holdreqs.nil? %>
+    <% @holdreqs.each do |holdreq| %>
+      <tr>
+        <td><%= Student.find(holdreq.student_id).name %></td>
+        <td><%= Book.find(holdreq.book_id).title %></td>
+      </tr>
+    <% end %>
+  <%end%>
+  </tbody>

@@ -1,0 +1,2 @@
+module Students::UnlocksHelper
+end
