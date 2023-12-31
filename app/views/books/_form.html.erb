@@ -1,81 +1,55 @@
 <%= form_with(model: book, local: true, :html => {multipart: true}) do |form| %>
     <% if book.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
-  
-        <ul>
-          <% book.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
+        <div id="error_explanation">
+            <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+            <ul>
+                <% book.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
     <% end %>
-  
     <div class="field">
-      <%= form.label :isbn %>
-      <%= form.text_field :isbn %>
+        <%= form.label :title %>
+        <%= form.text_field :title %>
     </div>
-  
     <div class="field">
-      <%= form.label :title %>
-      <%= form.text_field :title %>
+        <%= form.label :author %>
+        <%= form.text_field :author %>
     </div>
-  
     <div class="field">
-      <%= form.label :authors %>
-      <%= form.text_field :authors %>
+        <%= form.label :isbn %>
+        <%= form.text_field :isbn %>
     </div>
-  
     <div class="field">
-      <%= form.label :language %>
-      <%= form.text_field :language %>
+        <%= form.label :library_id %>
+        <%= form.text_field :library_id %>
     </div>
-  
-    <div class="field">
-      <%= form.label :published %>
-      <%= form.text_field :published %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :edition %>
-      <%= form.text_field :edition %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :cover %>
-      <%= form.file_field :cover %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :subject %>
-      <%= form.text_field :subject %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :summary %>
-      <%= form.text_area :summary %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :category %>
-      <%= form.text_field :category %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :special_collection %>
-      <%= form.check_box :special_collection %>
-    </div>
-  
-      <%= form.label :library_id %>
-      <%= select("book", "library_id", Library.all.collect{|l| [l.name, l.id]})  %>
-      
-      <div class="field">
-      <%= form.label :count %>
-      <%= form.number_field :count %>
-    </div>
-      
     <div class="actions">
-      <%= form.submit %>
+        <%= form.submit %>
     </div>
+
+
+
+    <div class="field">
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+    </div>
+    <div class="field">
+        <%= form.label :author %>
+        <%= form.text_field :author %>
+    </div>
+    <div class="field">
+        <%= form.label :isbn %>
+        <%= form.text_field :isbn %>
+    </div>
+    <div class="field">
+        <%= form.label :library_id %>
+        <%= form.text_field :library_id %>
+    </div>
+    <div class="actions">
+        <%= form.submit %>
+    </div>
+        
   <% end %>
   
