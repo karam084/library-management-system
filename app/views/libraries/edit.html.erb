@@ -1,0 +1,12 @@
+<h1>Editing Library</h1>
+
+<%= render 'form', library: @library %>
+
+<% if !current_admin.nil? %>
+	<%= link_to 'Back', show_libraries_path %>	
+<% elsif !current_librarian.nil? %>
+	<%= link_to 'Back', librarians_path %>
+<% else %>
+	<%= link_to 'Show', @library %> |
+	<%= link_to 'Back', libraries_path %>
+<% end %>

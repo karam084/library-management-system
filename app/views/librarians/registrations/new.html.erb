@@ -1,0 +1,36 @@
+<h2>Librarian Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.text_field :password %>
+  </div>
+
+  <div class="field">
+    <%= form.label :library %>
+    <%= select("librarian", "library", Library.all.collect{ |c| [ c.name] }) %>
+  </div>
+
+    <div class="field">
+    <%= form.hidden_field :approved, :value => 'No' %>
+  </div>
+  <strong>Note:</strong> Ask an Administrator to approve your account first.<br><br>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= render "librarians/shared/links" %>

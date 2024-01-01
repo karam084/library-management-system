@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Librarian Panel</h1>
+Name: <%= current_librarian.name %><br>
+Email: <%=  current_librarian.email %><br>
+<br>
+<br>
+<table>
+    <th><strong>Librarian Rights</strong></th>
+	<tr><td></tr></td>
+	<tr><td></tr></td>
+	<tr><td><%= link_to 'Edit Profile', edit_librarian_path(current_librarian) %></td></tr>
+	<tr><td></tr></td>
+	<tr><td>Your profile has not been approved yet. Please ask the Administrator to approve it.</tr></td>
+</table>

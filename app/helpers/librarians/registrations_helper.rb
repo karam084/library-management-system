@@ -1,0 +1,2 @@
+module Librarians::RegistrationsHelper
+end

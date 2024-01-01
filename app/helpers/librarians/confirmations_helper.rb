@@ -1,0 +1,2 @@
+module Librarians::ConfirmationsHelper
+end

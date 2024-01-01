@@ -1,0 +1,7 @@
+<h1>New Library</h1>
+
+<%= render 'form', library: @library %>
+
+<% if current_admin.nil? %>
+<%= link_to 'Back', libraries_path %>
+<% end %>

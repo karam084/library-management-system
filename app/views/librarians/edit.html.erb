@@ -1,0 +1,10 @@
+<h1>Editing Librarian</h1>
+
+<%= render 'form', librarian: @librarian %>
+
+<% if current_admin.nil? %>
+<%= link_to 'Show', @librarian %> |
+<%= link_to 'Back', librarians_path %>
+<% else %>
+<%= link_to 'Back', show_librarians_path %>
+<% end %>
