@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Admin Panel</h1>
+Name: <%= current_admin.name %><br>
+Email: <%=  current_admin.email %><br>
+<br>
+<br>
+<table>
+  <th><strong>Admin Rights</strong></th>
+
+  <tr><td><%= link_to 'Edit Profile', edit_admin_path(current_admin) %></td></tr>
+  <tr><td></td><tr>
+  <tr><td></td><tr>
+  <tr><td><strong>Librarians</strong></td><tr>
+  <tr><td><%= link_to 'Add Librarian', new_librarian_path %></td></tr>
+  <tr><td><%= link_to 'View Librarians (Details/Edit/Delete/Approve)', show_librarians_path %></td></tr>
+  <tr><td></td><tr>
+  <tr><td></td><tr>
+  <tr><td><strong>Libraries</strong></td><tr>
+  <tr><td><%= link_to 'Add Library', new_library_path %></tr>
+  <tr><td><%= link_to 'View Libraries (Details/Edit/Delete)', show_libraries_path %></td></tr>
+  <tr><td></td><tr>
+  <tr><td></td><tr>
+  <tr><td><strong>Students</strong></td><tr>
+  <tr><td><%= link_to 'Add Student', new_student_path %></td></tr>
+  <tr><td><%= link_to 'View Students (Details/Edit)', show_students_path %></td></tr>  
+  <tr><td><%= link_to 'List of Students who have Checked Out Books', list_checkedoutBooksAndStudentsAdmin_path %></td></tr>  
+  <tr><td><%= link_to 'View Students with Overdue Fine', getOverdueBooks_path %></tr>
+  <tr><td></td><tr>
+  <tr><td></td><tr>
+  <tr><td><strong>Books</strong></td><tr>
+  <tr><td><%= link_to 'Add Book', add_books_path %></td></tr>
+  <tr><td><%= link_to 'View Books (Details/Borrowing History/Edit/Delete)', show_books_path %></tr>
+  <tr><td><%= link_to 'View Checked Out Books', list_checkedoutBooks_path %></tr>  
+  <tr><td><%= link_to 'View Book Hold Request', viewHoldRequestForAdmin_path %></tr>
+    
+</table>
+

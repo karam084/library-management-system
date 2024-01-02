@@ -2,6 +2,6 @@
 
 <%= render 'form', student: @student %>
 
-<% if current_admin.nil? %>
+<% if current_page? %>
 <%= link_to 'Back', students_path %>
 <% end %>

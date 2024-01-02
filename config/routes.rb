@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  # devise_for :librarians, controllers: { sessions: 'librarians/sessions' , registrations: 'librarians/registrations'}
+  # devise_for :admins, controllers: { sessions: 'admins/sessions' , registrations: 'admins/registrations'}
+  # devise_for:librarians, controllers: { sessions: 'librarians/sessions' , registrations: 'librarians/registrations'}
   # devise_for :students, controllers: { sessions: 'students/sessions' , registrations: 'students/registrations'}
+
   resources :transactions
   resources :librarians
   resources :libraries
