@@ -23,43 +23,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_01_202248) do
   end
 
   create_table "bookmarks", force: :cascade do |t|
-    t.bigint "book_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_bookmarks_on_book_id"
   end
 
   create_table "books", force: :cascade do |t|
-    t.string "isbn"
-    t.string "title"
-    t.string "authors"
-    t.string "language"
-    t.string "published"
-    t.string "edition"
-    t.string "subject"
-    t.text "summary"
-    t.string "category"
-    t.boolean "special_collection"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "count"
   end
 
   create_table "checkouts", force: :cascade do |t|
-    t.bigint "book_id", null: false
-    t.date "issue_date"
-    t.date "return_date"
-    t.integer "validity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_checkouts_on_book_id"
   end
 
   create_table "hold_requests", force: :cascade do |t|
-    t.bigint "book_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_hold_requests_on_book_id"
   end
 
   create_table "librarians", force: :cascade do |t|
@@ -83,10 +56,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_01_202248) do
   end
 
   create_table "special_books", force: :cascade do |t|
-    t.bigint "book_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_special_books_on_book_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -119,8 +88,4 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_01_202248) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "bookmarks", "books"
-  add_foreign_key "checkouts", "books"
-  add_foreign_key "hold_requests", "books"
-  add_foreign_key "special_books", "books"
 end

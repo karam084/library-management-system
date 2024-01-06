@@ -6,43 +6,24 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_importmap_tags %>
+    <%= javascript_tag'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body><!DOCTYPE html>
-  <html>
-    <head>
-      <title>LibrarySystem</title>
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <%= csrf_meta_tags %>
-      <%= csp_meta_tag %>
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <title>LibrarySystem</title>
-          <meta name="viewport" content="width=device-width,initial-scale=1">
-          <%= csrf_meta_tags %>
-          <%= csp_meta_tag %>
-      
-          <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-          <%= javascript_importmap_tags %>
-        </head>
-      
-        <body>
-          <%= yield %>
-        </body>
-      </html>
-      
-      <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-      <%= javascript_importmap_tags %>
-    </head>
-  
-    <body>
-      <%= yield %>
-    </body>
-  </html>
+  <body>
+    <% if student_signed_in?%>
+    <%= link_to "Logout", destroy_student_session_path, method: :delete%>
+    <%= link_to 'Back', students_path %>
+    <%end%>
+    <% if librarian_signed_in?%>
+    <%= link_to "Logout", destroy_librarian_session_path, method: :delete%>
+    <%= link_to 'Back', librarians_path %>
+    <%end%>
+        <% if admin_signed_in?%>
+    <%= link_to "Logout", destroy_librarian_session_path, method: :delete%>
+    <%= link_to 'Back', admins_path %>
+    <%end%>
 
-  
+
     <%= yield %>
   </body>
 </html>

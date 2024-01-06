@@ -30,6 +30,8 @@ gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
+gem 'carrierwave', '~> 3.0'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -42,8 +44,18 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+ # devise
+gem 'devise'
+
+gem 'sass-rails', '~> 6.0'
+
+gem 'webpacker', '~> 5.0'
+# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem 'turbolinks', '~> 5.0.0'
 # Use Sass to process CSS
 # gem "sassc-rails"
+
+gem 'omniauth'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

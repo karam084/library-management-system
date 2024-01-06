@@ -1,43 +1,42 @@
 <%= form_with(model: transaction, local: true) do |form| %>
-    <% if transaction.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
-  
-        <ul>
-          <% transaction.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-  
-    <div class="field">
-      <%= form.label :isbn %>
-      <%= form.text_field :isbn %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :email %>
-      <%= form.text_field :email %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :checkout %>
-      <%= form.check_box :checkout %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :request %>
-      <%= form.check_box :request %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :bookmarks %>
-      <%= form.check_box :bookmarks %>
-    </div>
-  
-    <div class="actions">
-      <%= form.submit %>
+  <% if transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+        <% transaction.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
-  
+
+  <div class="field">
+    <%= form.label :isbn %>
+    <%= form.text_field :isbn %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :checkout %>
+    <%= form.check_box :checkout %>
+  </div>
+
+  <div class="field">
+    <%= form.label :request %>
+    <%= form.check_box :request %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bookmarks %>
+    <%= form.check_box :bookmarks %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

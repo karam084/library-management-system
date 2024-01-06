@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  # devise_for :admins, controllers: { sessions: 'admins/sessions' , registrations: 'admins/registrations'}
-  # devise_for:librarians, controllers: { sessions: 'librarians/sessions' , registrations: 'librarians/registrations'}
-  # devise_for :students, controllers: { sessions: 'students/sessions' , registrations: 'students/registrations'}
-
+  devise_for :admins , controllers: { sessions: 'admins/sessions' , registrations: 'admins/registrations'}
+  devise_for :librarians, controllers: { sessions: 'librarians/sessions' , registrations: 'librarians/registrations'}
+  devise_for :students, controllers: { sessions: 'students/sessions' , registrations: 'students/registrations'}
   resources :transactions
   resources :librarians
   resources :libraries
@@ -44,6 +43,4 @@ Rails.application.routes.draw do
   get '/reject_special_book' => 'books#reject_special_book', :as => 'reject_special_book'
   get '/approve_special_book' => 'books#approve_special_book', :as => 'approve_special_book'
   
-  
-
 end
