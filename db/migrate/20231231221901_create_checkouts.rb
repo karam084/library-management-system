@@ -5,7 +5,7 @@ class CreateCheckouts < ActiveRecord::Migration[7.0]
       t.date :issue_date
       t.date :return_date
       t.integer :validity
-      #t.references :student, null: false, foreign_key: true
+      t.references :student, null: false, foreign_key: true
 
 
       t.timestamps

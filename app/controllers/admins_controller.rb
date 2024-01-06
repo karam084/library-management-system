@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-    before_action :set_admin, only: [:show, :edit, :update, :destroy]
+  before_action :set_admin, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin!
 
   # GET /admins
@@ -89,4 +89,5 @@ class AdminsController < ApplicationController
     def admin_params
       params.require(:admin).permit(:name, :email, :password)
     end
+	
 end

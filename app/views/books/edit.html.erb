@@ -1,100 +1,13 @@
 <h1>Editing Book</h1>
 
-<%= render 'form' %>
+<%= render 'form', book: @book %>
+
+<% if current_admin.nil? and current_librarian.nil? %>  
 
 <%= link_to 'Show', @book %> |
 <%= link_to 'Back', books_path %>
-Compare this snippet from app/views/books/_form.html.erb:
-<%= form_with(model: book, local: true) do |form| %>
-    <% if book.errors.any? %>
-        <div id="error_explanation">
-            <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
-            <ul>
-                <% book.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                <% end %>
-            </ul>
-        </div>
-    <% end %>
-    <div class="field">
-        <%= form.label :title %>
-        <%= form.text_field :title %>
-    </div>
-    <div class="field">
-        <%= form.label :author %>
-        <%= form.text_field :author %>
-    </div>
-    <div class="field">
-        <%= form.label :isbn %>
-        <%= form.text_field :isbn %>
-    </div>
-    <div class="field">
-        <%= form.label :library_id %>
-        <%= form.text_field :library_id %>
-    </div>
-    <div class="actions">
-        <%= form.submit %>
-    </div>
+
 <% end %>
-Compare this snippet from app/views/books/new.html.erb:
-<h1>New Book</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', books_path %>
-Compare this snippet from app/views/books/books_students.html.erb:
-<p id="notice"><%= notice %></p>
-
-<h1>Books</h1>
-
-<table>
-    <thead>
-        <tr>
-            <th>Isbn</th>
-            <th>Title</th>
-            <th>Authors</th>
-            <th>Language</th>
-            <th>Published</th>
-            <th>Edition</th>
-            <th>Subject</th>
-            <th>Summary</th>
-            <th>Category</th>
-            <th>Special Collection</th>
-            <th>Library</th>
-            <th colspan="4"></th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <% @books.each do |book| %>
-        <tr>
-            <td><%= book.isbn %></td>
-            <td><%= book.title %></td>
-            <td><%= book.authors %></td>
-            <td><%= book.language %></td>
-            <td><%= book.published %></td>
-            <td><%= book.edition %></td>
-            <td><%= book.subject %></td>
-            <td><%= book.summary %></td>
-            <td><%= book.category %></td>
-            <td><%= if book.special_collection == true
-            'Yes'
-            else
-              'No'
-            end
-             %></td>
-            <td><%=  Library.find(book.library_id).name %></td>
-            <td><%= link_to 'Show', book %></td>
-            <td><%= link_to 'Edit', edit_book_path(book) %></td>
-            <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Book', new_book_path %>
-Compare this snippet from app/views/books/search.html.erb:
-<p id="notice"><%= notice %></p>
-
+<% if !current_librarian.nil? %>
+<%= link_to 'Back', librarian_book_view_path %>
+<% end %>

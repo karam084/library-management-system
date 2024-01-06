@@ -1,89 +1,138 @@
 <h2>Checked Out Books</h2>
 <table>
-    <thead>
-        <tr>
-            <th>Isbn</th>
-            <th>Title</th>
-            <th>Authors</th>
-            <th>Language</th>
-            <th>Published</th>
-            <th>Edition</th>
-            <th>Subject</th>
-            <th>Summary</th>
-            <th colspan="3"></th>
-        </tr>
+  <thead>
+    <tr>
+      <th>Isbn</th>
+      <th>Title</th>
+      <th>Authors</th>
+      <th>Language</th>
+      <th>Published</th>
+      <th>Edition</th>
+      <th>Cover</th>
+      <th>Subject</th>
+      <th>Summary</th>
+      <th>Category</th>
+      <th>Special Collection</th>
+      <th>Library</th>
+      <th colspan="6"></th>
+    </tr>
     </thead>
     <tbody>
-        <% @books.each do |book| %>
-        <tr>
-            <td><%= book[:isbn] %></td>
-            <td><%= book[:title] %></td>
-            <td><%= book[:authors] %></td>
-            <td><%= book[:language] %></td>
-            <td><%= book[:published] %></td>
-            <td><%= book[:edition] %></td>
-            <td><%= book[:subject] %></td>
-            <td><%= book[:summary] %></td>
-            <td><%= link_to 'Show', book %></td>
-            <td><%= link_to 'Edit', edit_book_path(book) %></td>
-            <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-        <% end %>
-    </tbody>
+    <% @checkout.each do |book| %>
+
+      <tr>
+        <td><%= book.isbn %></td>
+        <td><%= book.title %></td>
+        <td><%= book.authors %></td>
+        <td><%= book.language %></td>
+        <td><%= book.published %></td>
+        <td><%= book.edition %></td>
+        <td><%= book.cover %></td>
+        <td><%= book.subject %></td>
+        <td><%= book.summary %></td>
+        <td><%= book.category %></td>
+        <td><%= if book.special_collection  == true
+			'Yes'
+			else
+			  'No'
+			end
+			 %></td>
+        <td><%= Library.find(book.library_id).name %></td>
+        <td><%= link_to 'Return Book', controller: "books", action: "returnBook", id: book %></td>
+      </tr>
+    <% end %>
+    </tbody>        
 </table>
 
-<br>
 
-<%= link_to 'New Book', new_book_path %>
-# Compare this snippet from app/views/books/show.html.erb:
-# <p id="notice"><%= notice %></p>
-# 
-# <p>
-#   <strong>Isbn:</strong>
-#   <%= @book[:isbn] %>
-# </p>
-# 
-# <p>
-#   <strong>Title:</strong>
-#   <%= @book[:title] %>
-# </p>
-# 
-# <p>
-#   <strong>Authors:</strong>
-#   <%= @book[:authors] %>
-# </p>
-# 
-# <p>
-#   <strong>Language:</strong>
-#   <%= @book[:language] %>
-# </p>
-# 
-# <p>
-#   <strong>Published:</strong>
-#   <%= @book[:published] %>
-# </p>
-# 
-# <p>
-#   <strong>Edition:</strong>
-#   <%= @book[:edition] %>
-# </p>
-# 
-# <p>
-#   <strong>Subject:</strong>
-#   <%= @book[:subject] %>
-# </p>
-# 
-# <p>
-#   <strong>Summary:</strong>
-#   <%= @book
-#   [:summary] %>
-# </p>
-#
-# <p>           
+<h2>Bookmarked Books</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Isbn</th>
+    <th>Title</th>
+    <th>Authors</th>
+    <th>Language</th>
+    <th>Published</th>
+    <th>Edition</th>
+    <th>Cover</th>
+    <th>Subject</th>
+    <th>Summary</th>
+    <th>Category</th>
+    <th>Special Collection</th>
+    <th>Library</th>
+    <th colspan="6"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @bookmark.each do |book| %>
 
-# Compare this snippet from app/views/books/index.html.erb:
-# <h1>Listing Books</h1>
-# 
-# <
-        
-    
+    <tr>
+      <td><%= book.isbn %></td>
+      <td><%= book.title %></td>
+      <td><%= book.authors %></td>
+      <td><%= book.language %></td>
+      <td><%= book.published %></td>
+      <td><%= book.edition %></td>
+      <td><%= book.cover %></td>
+      <td><%= book.subject %></td>
+      <td><%= book.summary %></td>
+      <td><%= book.category %></td>
+      <td><%= if book.special_collection  == true
+			'Yes'
+			else
+			  'No'
+			end
+			 %></td>
+      <td><%= Library.find(book.library_id).name %></td>
+      <td><%= link_to 'Unbookmark', controller: "books", action: "unbookmark", id: book %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h2>Requested Books</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Isbn</th>
+    <th>Title</th>
+    <th>Authors</th>
+    <th>Language</th>
+    <th>Published</th>
+    <th>Edition</th>
+    <th>Cover</th>
+    <th>Subject</th>
+    <th>Summary</th>
+    <th>Category</th>
+    <th>Special Collection</th>
+    <th>Library</th>
+    <th colspan="6"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @request.each do |book| %>
+
+    <tr>
+      <td><%= book.isbn %></td>
+      <td><%= book.title %></td>
+      <td><%= book.authors %></td>
+      <td><%= book.language %></td>
+      <td><%= book.published %></td>
+      <td><%= book.edition %></td>
+      <td><%= book.cover %></td>
+      <td><%= book.subject %></td>
+      <td><%= book.summary %></td>
+      <td><%= book.category %></td>
+      <td><%= if book.special_collection  == true
+			'Yes'
+			else
+			  'No'
+			end
+			 %></td>
+      <td><%= Library.find(book.library_id).name %></td>
+      <td><%= link_to 'Repeal Request', controller: "books", action: "repealRequest", id: book %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

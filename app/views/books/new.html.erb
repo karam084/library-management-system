@@ -2,9 +2,9 @@
 
 <%= render 'form', book: @book %>
 
-<% if current_page? %>     
+<% if current_admin.nil? and current_librarian.nil? %>     
 	<%= link_to 'Back', books_path %>
 <% end %>
-<% if !current_page? %>
+<% if !current_librarian.nil? %>
 <%= link_to 'Back', librarian_book_view_path %>
-<% end %>z
+<% end %>
